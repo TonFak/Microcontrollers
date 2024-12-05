@@ -1,0 +1,36 @@
+const int ledPin1 = 13;  // Свет красный
+const int ledPin2 = 12;  // Свет синий
+const int buttonPin = 2; // Кнопка
+int buttonState = 0;      
+int lastButtonState = 0;  
+bool isBlinking = false;  // Мигания
+
+void setup() {
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(buttonPin, INPUT_PULLUP); 
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == LOW && lastButtonState == HIGH) {
+    delay(50);  
+    if (isBlinking) {
+      digitalWrite(ledPin1, LOW);
+      digitalWrite(ledPin2, LOW);
+      isBlinking = false;
+    } else {
+      isBlinking = true;
+    }
+  }
+
+  lastButtonState = buttonState;
+  if (isBlinking) {
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, LOW);
+    delay(500);  
+    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin2, HIGH);
+    delay(500);  
+  }
+}
