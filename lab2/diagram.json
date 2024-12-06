@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "author": "artemiy",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -137.4, "left": 300.4, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": -133.8, "left": -10.2, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": -245.4, "left": 67.3, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -339.2,
+      "left": 274.4,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -191.7, "left": 369, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -35,
+      "left": 363.95,
+      "rotate": 270,
+      "attrs": { "value": "4700" }
+    },
+    { "type": "chip-bmp180", "id": "chip1", "top": -181.38, "left": 465.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "rtc1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "rtc1:5V", "uno:5V", "red", [ "h0" ] ],
+    [ "lcd1:GND", "uno:GND.2", "black", [ "h0" ] ],
+    [ "lcd1:SDA", "uno:A4", "cyan", [ "h0" ] ],
+    [ "lcd1:SCL", "uno:A5", "magenta", [ "h0" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "bb1:8t.c", "uno:2", "green", [ "h-153.6", "v76.2" ] ],
+    [ "bb1:7t.d", "bb1:8b.i", "red", [ "v0" ] ],
+    [ "bb1:8b.j", "uno:5V", "red", [ "v9.6", "h-233.6" ] ],
+    [ "bb1:10t.d", "uno:GND.2", "black", [ "v96", "h-243.3" ] ],
+    [ "chip1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "chip1:VCC", "uno:3.3V", "red", [ "h0" ] ],
+    [ "rtc1:SDA", "uno:A4", "cyan", [ "h0" ] ],
+    [ "rtc1:SCL", "uno:A5", "magenta", [ "h0" ] ],
+    [ "uno:A4", "chip1:SDA", "cyan", [ "v-85.9", "h186" ] ],
+    [ "chip1:SCL", "uno:A5", "magenta", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:7t.b", "", [ "$bb" ] ],
+    [ "dht1:SDA", "bb1:8t.b", "", [ "$bb" ] ],
+    [ "dht1:NC", "bb1:9t.b", "", [ "$bb" ] ],
+    [ "dht1:GND", "bb1:10t.b", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:8b.h", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:8t.d", "", [ "$bb" ] ]
+  ],
+  "dependencies": {}
+}

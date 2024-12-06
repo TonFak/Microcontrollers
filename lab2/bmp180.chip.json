@@ -1,0 +1,28 @@
+{
+  "name": "BMP180",
+  "author": "",
+  "pins": [
+    "VCC",
+    "GND",
+    "SCL",
+    "SDA"
+  ],
+  "controls": [
+    {
+      "id": "temperature",
+      "label": "BMP180 Temperature (ºC)",
+      "type": "range",
+      "min": 0,
+      "max": 65,
+      "step": 0.1
+    },
+    {
+      "id": "pressure",
+      "label": "BMP180 Pressure (Pa)",
+      "type": "range",
+      "min": 30000,
+      "max": 110000,
+      "step": 2
+    }
+  ]
+}
